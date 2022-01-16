@@ -2,38 +2,43 @@ package toby.live;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.Flow.Publisher;
 import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.Flow.Subscription;
+import java.util.concurrent.TimeUnit;
 
 public class PubSub { //publisher, subscriber
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		Iterable<Integer> itr = Arrays.asList(1, 2, 3, 4, 5);
+		ExecutorService es = Executors.newCachedThreadPool();
 		
 		Publisher p = new Publisher() {
 
 			@Override
 			public void subscribe(Subscriber subscriber) {
-				// TODO Auto-generated method stub
 				subscriber.onSubscribe(new Subscription() {
 					Iterator<Integer> it = itr.iterator();
 
 					@Override
 					public void request(long n) {
-						try {
-							while(n-- > 0) {
-								if (it.hasNext()) {
-									subscriber.onNext(it.next());
-								} else {
-									subscriber.onComplete();
-									break;
+						es.execute(() -> {
+							int i = 0;
+							try {
+								while(i++ < n) {
+									if (it.hasNext()) {
+										subscriber.onNext(it.next());
+									} else {
+										subscriber.onComplete();
+										break;
+									}
 								}
 							}
-						}
-						catch (RuntimeException e) {
-							subscriber.onError(e);
-						}
-						
+							catch (RuntimeException e) {
+								subscriber.onError(e);
+							}
+						});
 					}
 
 					@Override
@@ -50,20 +55,20 @@ public class PubSub { //publisher, subscriber
 
 			@Override
 			public void onSubscribe(Subscription subscription) {
-				System.out.println("onSubscribe");
+				System.out.println(Thread.currentThread().getName() + " onSubscribe");
 				this.subscription = subscription;
 				this.subscription.request(1);
 			}
 
 			@Override
 			public void onNext(Integer item) {
-				System.out.println("onNext" + item);
+				System.out.println(Thread.currentThread().getName() + " onNext " + item);
 				this.subscription.request(1);
 			}
 
 			@Override
 			public void onError(Throwable throwable) {
-				System.out.println("onError");				
+				System.out.println("onError: " + throwable.getMessage());				
 			}
 
 			@Override
@@ -73,5 +78,8 @@ public class PubSub { //publisher, subscriber
 		};
 		
 		p.subscribe(s);
+		
+		es.awaitTermination(10, TimeUnit.HOURS);
+		es.shutdown();
 	}
 }
