@@ -13,8 +13,8 @@ public class Ob {
 		public void run() {
 			for (int i=1; i<=10; i++) {
 				setChanged();
-				notifyObservers(i);		//push
-				// int i = it.next();			//pull
+				notifyObservers(i);			//push
+				// int i = it.next();		//pull
 			}
 		}
 	}

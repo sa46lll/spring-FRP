@@ -47,26 +47,10 @@ public class PubSub2 { //publisher, subscriber
 		return new Publisher<Integer>() {
 			@Override
 			public void subscribe(Subscriber<? super Integer> sub) {
-				pub.subscribe(new Subscriber<Integer>() {
-
-					@Override
-					public void onSubscribe(Subscription subscription) {
-						sub.onSubscribe(subscription); // onSub, onError, onComplete 그대로 넘겨줌
-					}
-
+				pub.subscribe(new DelegateSub(sub){
 					@Override
 					public void onNext(Integer item) {
-						sub.onNext(f.apply(item)); //함수 변환 적용
-					}
-
-					@Override
-					public void onError(Throwable throwable) {
-						sub.onError(throwable);
-					}
-
-					@Override
-					public void onComplete() {
-						sub.onComplete();
+						super.onNext(f.apply(item));
 					}
 				});
 			}
