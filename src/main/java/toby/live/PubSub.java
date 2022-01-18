@@ -79,7 +79,7 @@ public class PubSub { //publisher, subscriber
 		
 		p.subscribe(s);
 		
-		es.awaitTermination(10, TimeUnit.HOURS);
+		es.awaitTermination(10, TimeUnit.SECONDS);
 		es.shutdown();
 	}
 }

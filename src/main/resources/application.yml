@@ -1,0 +1,8 @@
+logging:
+  file:
+    name: ${user.dir}/log/test.log  # 로깅 파일 위치
+    max-history: 7 # 로그 파일 삭제 주기
+    max-size: 10MB  # 로그 파일 하나당 최대 파일 사이즈
+  level:
+    com.project.study : error
+    com.project.study.controller : debug
