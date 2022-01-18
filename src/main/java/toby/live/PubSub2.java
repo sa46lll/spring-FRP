@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.Flow.Publisher;
 import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.Flow.Subscription;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -33,14 +34,35 @@ public class PubSub2 { //publisher, subscriber
 		Publisher<Integer> pub = iterPub(Stream.iterate(1 , a->a+1).limit(10).collect(Collectors.toList()));
 		Publisher<Integer> mapPub = mapPub(pub, s -> s * 10);
 //		Publisher<Integer> mapPub2 = mapPub(mapPub, s -> -s);
-		Publisher<Integer> sumPub = sumPub(pub); // 합계를 계산해주는 퍼블리셔
-		
-		Subscriber<Integer> s = logSub();
-		
+//		Publisher<Integer> sumPub = sumPub(pub); // 합계를 계산해주는 퍼블리셔
+		Publisher<Integer> reducePub = reducePub(pub, 0, (BiFunction<Integer, Integer, Integer>)(a, b)->a+b); //초기 데이터
+
 //		mapPub.subscribe(s);
 //		mapPub2.subscribe(s);
-		sumPub.subscribe(s);
+		reducePub.subscribe(logSub());
 
+	}
+
+	private static Publisher<Integer> reducePub(Publisher<Integer> pub, int init, BiFunction<Integer, Integer, Integer> bf) {
+		return new Publisher<Integer>() {
+			@Override
+			public void subscribe(Subscriber<? super Integer> sub) {
+				pub.subscribe(new DelegateSub(sub){
+					int result = init;
+
+					@Override
+					public void onNext(Integer item) {
+						result = bf.apply(result, item);
+					}
+
+					@Override
+					public void onComplete() {
+						sub.onNext(result);
+						sub.onComplete();
+					}
+				});
+			}
+		};
 	}
 
 	private static Publisher<Integer> sumPub(Publisher<Integer> pub) {
