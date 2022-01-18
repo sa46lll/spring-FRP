@@ -33,12 +33,36 @@ public class PubSub2 { //publisher, subscriber
 		Publisher<Integer> pub = iterPub(Stream.iterate(1 , a->a+1).limit(10).collect(Collectors.toList()));
 		Publisher<Integer> mapPub = mapPub(pub, s -> s * 10);
 //		Publisher<Integer> mapPub2 = mapPub(mapPub, s -> -s);
+		Publisher<Integer> sumPub = sumPub(pub); // 합계를 계산해주는 퍼블리셔
 		
 		Subscriber<Integer> s = logSub();
 		
-		mapPub.subscribe(s);
+//		mapPub.subscribe(s);
 //		mapPub2.subscribe(s);
+		sumPub.subscribe(s);
 
+	}
+
+	private static Publisher<Integer> sumPub(Publisher<Integer> pub) {
+		return new Publisher<Integer>() {
+			@Override
+			public void subscribe(Subscriber<? super Integer> sub) {
+				pub.subscribe(new DelegateSub(sub){
+					int sum = 0;
+
+					@Override
+					public void onNext(Integer item) {
+						sum += item;
+					}
+
+					@Override
+					public void onComplete() {
+						sub.onNext(sum);
+						sub.onComplete();
+					}
+				}); // 구독요청
+			}
+		};
 	}
 
 
