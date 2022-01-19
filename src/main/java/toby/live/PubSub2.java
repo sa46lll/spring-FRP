@@ -32,25 +32,24 @@ public class PubSub2 { //publisher, subscriber
 	public static void main(String[] args) {
 		
 		Publisher<Integer> pub = iterPub(Stream.iterate(1 , a->a+1).limit(10).collect(Collectors.toList()));
-		Publisher<String> mapPub = mapPub(pub, s -> "[" + s + "]");
+//		Publisher<String> mapPub = mapPub(pub, s -> "[" + s + "]");
 //		Publisher<Integer> mapPub2 = mapPub(mapPub, s -> -s);
 //		Publisher<Integer> sumPub = sumPub(pub); // 합계를 계산해주는 퍼블리셔
-//		Publisher<Integer> reducePub = reducePub(pub, 0, (BiFunction<Integer, Integer, Integer>)(a, b)->a+b); //초기 데이터
+		Publisher<StringBuilder> reducePub = reducePub(pub, new StringBuilder(), (a, b)->a.append(b+","));
 
-		mapPub.subscribe(logSub());
+		reducePub.subscribe(logSub());
 
 	}
 
-	/*
-	private static Publisher<Integer> reducePub(Publisher<Integer> pub, int init, BiFunction<Integer, Integer, Integer> bf) {
-		return new Publisher<Integer>() {
+private static <T, R> Publisher<R> reducePub(Publisher<T> pub, R init, BiFunction<R, T, R> bf) {
+		return new Publisher<R>() {
 			@Override
-			public void subscribe(Subscriber<? super Integer> sub) {
-				pub.subscribe(new DelegateSub(sub){
-					int result = init;
+			public void subscribe(Subscriber<? super R> sub) {
+				pub.subscribe(new DelegateSub<T, R>(sub){
+					R result = init;
 
 					@Override
-					public void onNext(Integer item) {
+					public void onNext(T item) {
 						result = bf.apply(result, item);
 					}
 
@@ -63,7 +62,6 @@ public class PubSub2 { //publisher, subscriber
 			}
 		};
 	}
-	 */
 
 	/*
 	private static Publisher<Integer> sumPub(Publisher<Integer> pub) {
