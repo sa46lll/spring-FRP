@@ -1,4 +1,4 @@
-package toby.live;
+package toby.live1;
 
 import java.util.List;
 import java.util.concurrent.Flow.Publisher;
@@ -23,7 +23,6 @@ import lombok.extern.slf4j.Slf4j;
  * 										-> onComplete
  */
 
-@Slf4j
 public class PubSub2 { //publisher, subscriber
 	
 	private static final Logger LOG = LoggerFactory.getLogger(PubSub2.class);
