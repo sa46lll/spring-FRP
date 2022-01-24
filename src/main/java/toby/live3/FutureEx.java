@@ -39,7 +39,7 @@ public class FutureEx {
     }
 
 
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
+    public static void main(String[] args) {
         ExecutorService es = Executors.newCachedThreadPool();
 
         CallbackFutureTask f = new CallbackFutureTask(() -> {

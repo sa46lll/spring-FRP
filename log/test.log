@@ -1,28 +1,55 @@
-2022-01-20 02:17:54.584  INFO 15180 --- [restartedMain] toby.sandbox.Toby005Application          : Starting Toby005Application using Java 11.0.10 on DESKTOP-9M5LNRG with PID 15180 (C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005\out\production\classes started by 9812s in C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005)
-2022-01-20 02:17:54.588  INFO 15180 --- [restartedMain] toby.sandbox.Toby005Application          : No active profile set, falling back to default profiles: default
-2022-01-20 02:17:54.732  INFO 15180 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-01-20 02:17:54.733  INFO 15180 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-01-20 02:17:57.158  INFO 15180 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-01-20 02:18:01.660  INFO 15180 --- [restartedMain] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8080
-2022-01-20 02:18:01.688  INFO 15180 --- [restartedMain] toby.sandbox.Toby005Application          : Started Toby005Application in 8.1 seconds (JVM running for 9.169)
-2022-01-20 02:18:13.640  INFO 6016 --- [restartedMain] toby.sandbox.Toby005Application          : Starting Toby005Application using Java 11.0.10 on DESKTOP-9M5LNRG with PID 6016 (C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005\out\production\classes started by 9812s in C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005)
-2022-01-20 02:18:13.643  INFO 6016 --- [restartedMain] toby.sandbox.Toby005Application          : No active profile set, falling back to default profiles: default
-2022-01-20 02:18:13.780  INFO 6016 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-01-20 02:18:13.781  INFO 6016 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-01-20 02:18:16.104  INFO 6016 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-01-20 02:18:20.377  INFO 6016 --- [restartedMain] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8080
-2022-01-20 02:18:20.401  INFO 6016 --- [restartedMain] toby.sandbox.Toby005Application          : Started Toby005Application in 7.584 seconds (JVM running for 8.589)
-2022-01-20 02:19:06.151  INFO 20644 --- [restartedMain] toby.sandbox.Toby005Application          : Starting Toby005Application using Java 11.0.10 on DESKTOP-9M5LNRG with PID 20644 (C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005\out\production\classes started by 9812s in C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005)
-2022-01-20 02:19:06.154  INFO 20644 --- [restartedMain] toby.sandbox.Toby005Application          : No active profile set, falling back to default profiles: default
-2022-01-20 02:19:06.286  INFO 20644 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-01-20 02:19:06.287  INFO 20644 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-01-20 02:19:08.637  INFO 20644 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-01-20 02:19:12.809  INFO 20644 --- [restartedMain] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8080
-2022-01-20 02:19:12.834  INFO 20644 --- [restartedMain] toby.sandbox.Toby005Application          : Started Toby005Application in 7.456 seconds (JVM running for 8.506)
-2022-01-20 02:22:14.654  INFO 17596 --- [restartedMain] toby.sandbox.Toby005Application          : Starting Toby005Application using Java 11.0.10 on DESKTOP-9M5LNRG with PID 17596 (C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005\out\production\classes started by 9812s in C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005)
-2022-01-20 02:22:14.664  INFO 17596 --- [restartedMain] toby.sandbox.Toby005Application          : No active profile set, falling back to default profiles: default
-2022-01-20 02:22:14.794  INFO 17596 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-01-20 02:22:14.794  INFO 17596 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-01-20 02:22:18.016  INFO 17596 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-01-20 02:22:22.609  INFO 17596 --- [restartedMain] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8080
-2022-01-20 02:22:22.651  INFO 17596 --- [restartedMain] toby.sandbox.Toby005Application          : Started Toby005Application in 8.967 seconds (JVM running for 10.182)
+2022-01-24 03:43:10.907  INFO 15660 --- [restartedMain] toby.sandbox.Toby008Application          : Starting Toby008Application using Java 11.0.10 on DESKTOP-9M5LNRG with PID 15660 (C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005\out\production\classes started by 9812s in C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005)
+2022-01-24 03:43:10.917  INFO 15660 --- [restartedMain] toby.sandbox.Toby008Application          : No active profile set, falling back to default profiles: default
+2022-01-24 03:43:11.088  INFO 15660 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-24 03:43:11.089  INFO 15660 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-24 03:43:13.760  INFO 15660 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-24 03:43:17.822  INFO 15660 --- [restartedMain] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8080
+2022-01-24 03:43:17.848  INFO 15660 --- [restartedMain] toby.sandbox.Toby008Application          : Started Toby008Application in 7.769 seconds (JVM running for 8.667)
+2022-01-24 03:43:17.853  INFO 15660 --- [restartedMain] toby.sandbox.Toby008Application          : run()
+2022-01-24 03:43:18.856  INFO 15660 --- [restartedMain] toby.sandbox.Toby008Application          : exit
+2022-01-24 12:00:44.139  INFO 3056 --- [restartedMain] toby.sandbox.Toby008Application          : Starting Toby008Application using Java 11.0.10 on DESKTOP-9M5LNRG with PID 3056 (C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005\out\production\classes started by 9812s in C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005)
+2022-01-24 12:00:44.142  INFO 3056 --- [restartedMain] toby.sandbox.Toby008Application          : No active profile set, falling back to default profiles: default
+2022-01-24 12:00:44.257  INFO 3056 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-24 12:00:44.257  INFO 3056 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-24 12:00:46.643  INFO 3056 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-24 12:00:50.663  INFO 3056 --- [restartedMain] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8080
+2022-01-24 12:00:50.674  INFO 3056 --- [restartedMain] toby.sandbox.Toby008Application          : Started Toby008Application in 7.308 seconds (JVM running for 8.27)
+2022-01-24 12:00:50.679  INFO 3056 --- [restartedMain] toby.sandbox.Toby008Application          : run()
+2022-01-24 12:00:51.689  INFO 3056 --- [restartedMain] toby.sandbox.Toby008Application          : exit: Hello
+2022-01-24 12:02:23.026  INFO 1760 --- [restartedMain] toby.sandbox.Toby008Application          : Starting Toby008Application using Java 11.0.10 on DESKTOP-9M5LNRG with PID 1760 (C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005\out\production\classes started by 9812s in C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005)
+2022-01-24 12:02:23.026  INFO 1760 --- [restartedMain] toby.sandbox.Toby008Application          : No active profile set, falling back to default profiles: default
+2022-01-24 12:02:23.144  INFO 1760 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-24 12:02:23.144  INFO 1760 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-24 12:02:25.491  INFO 1760 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-24 12:02:28.571  INFO 1760 --- [restartedMain] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8080
+2022-01-24 12:02:28.578  INFO 1760 --- [restartedMain] toby.sandbox.Toby008Application          : Started Toby008Application in 6.282 seconds (JVM running for 7.185)
+2022-01-24 12:02:28.590  INFO 1760 --- [restartedMain] toby.sandbox.Toby008Application          : run()
+2022-01-24 12:02:29.598  INFO 1760 --- [restartedMain] toby.sandbox.Toby008Application          : exit: Hello
+2022-01-24 12:03:31.746  INFO 20468 --- [restartedMain] toby.sandbox.Toby008Application          : Starting Toby008Application using Java 11.0.10 on DESKTOP-9M5LNRG with PID 20468 (C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005\out\production\classes started by 9812s in C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005)
+2022-01-24 12:03:31.747  INFO 20468 --- [restartedMain] toby.sandbox.Toby008Application          : No active profile set, falling back to default profiles: default
+2022-01-24 12:03:31.833  INFO 20468 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-24 12:03:31.834  INFO 20468 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-24 12:03:34.233  INFO 20468 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-24 12:03:38.121  INFO 20468 --- [restartedMain] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8080
+2022-01-24 12:03:38.153  INFO 20468 --- [restartedMain] toby.sandbox.Toby008Application          : Started Toby008Application in 7.119 seconds (JVM running for 8.049)
+2022-01-24 12:03:38.162  INFO 20468 --- [restartedMain] toby.sandbox.Toby008Application          : run()
+2022-01-24 12:03:39.169  INFO 20468 --- [restartedMain] toby.sandbox.Toby008Application          : exit: 
+2022-01-24 12:04:14.158  INFO 21188 --- [restartedMain] toby.sandbox.Toby008Application          : Starting Toby008Application using Java 11.0.10 on DESKTOP-9M5LNRG with PID 21188 (C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005\out\production\classes started by 9812s in C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005)
+2022-01-24 12:04:14.158  INFO 21188 --- [restartedMain] toby.sandbox.Toby008Application          : No active profile set, falling back to default profiles: default
+2022-01-24 12:04:14.254  INFO 21188 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-24 12:04:14.254  INFO 21188 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-24 12:04:16.515  INFO 21188 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-24 12:04:19.967  INFO 21188 --- [restartedMain] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8080
+2022-01-24 12:04:19.985  INFO 21188 --- [restartedMain] toby.sandbox.Toby008Application          : Started Toby008Application in 6.499 seconds (JVM running for 7.319)
+2022-01-24 12:04:19.993  INFO 21188 --- [restartedMain] toby.sandbox.Toby008Application          : run()
+2022-01-24 12:04:21.004  INFO 21188 --- [restartedMain] toby.sandbox.Toby008Application          : exit: 
+2022-01-24 12:09:27.374  INFO 24936 --- [restartedMain] toby.sandbox.Toby008Application          : Starting Toby008Application using Java 11.0.10 on DESKTOP-9M5LNRG with PID 24936 (C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005\out\production\classes started by 9812s in C:\Users\9812s\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\toby005)
+2022-01-24 12:09:27.375  INFO 24936 --- [restartedMain] toby.sandbox.Toby008Application          : No active profile set, falling back to default profiles: default
+2022-01-24 12:09:27.489  INFO 24936 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-24 12:09:27.490  INFO 24936 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-24 12:09:29.892  INFO 24936 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-24 12:09:33.466  INFO 24936 --- [restartedMain] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8080
+2022-01-24 12:09:33.491  INFO 24936 --- [restartedMain] toby.sandbox.Toby008Application          : Started Toby008Application in 6.88 seconds (JVM running for 7.802)
+2022-01-24 12:09:33.501  INFO 24936 --- [restartedMain] toby.sandbox.Toby008Application          : run()
+2022-01-24 12:09:33.502  INFO 24936 --- [restartedMain] toby.sandbox.Toby008Application          : hello()
+2022-01-24 12:09:34.514  INFO 24936 --- [restartedMain] toby.sandbox.Toby008Application          : exit: Hello
