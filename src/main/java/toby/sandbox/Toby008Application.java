@@ -11,6 +11,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
+import org.springframework.util.concurrent.ListenableFuture;
 
 import java.util.concurrent.Future;
 
@@ -22,7 +23,7 @@ public class Toby008Application {
     @Component
     public static class MyService {
         @Async
-        public Future<String> hello() throws InterruptedException {
+        public ListenableFuture<String> hello() throws InterruptedException {
             log.info("hello()");
             Thread.sleep(2000);
             return new AsyncResult<>("Hello");
@@ -40,9 +41,9 @@ public class Toby008Application {
     ApplicationRunner run(){
         return args -> {
             log.info("run()");
-            Future<String> f = myService.hello();
-            log.info("exit: " + f.isDone());
-            log.info("result: " + f.get());
+            ListenableFuture<String> f = myService.hello();
+            f.addCallback(s -> System.out.println(s), e -> System.out.println(e.getMessage()));
+            log.info("exit");
         };
     }
 
