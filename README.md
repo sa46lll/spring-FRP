@@ -536,78 +536,88 @@ future f 가 비동기 작업의 결과물은 아니지만 방법을 제공해�
 
    분리하고 추상화할 수 있어야 한다.
 
-   > **Spring 에서 비동기작업 처리하는 방법**
-   >
+> **Spring 에서 비동기작업 처리하는 방법**
+>
 
-   `ConfigurableApplicationContext`
+`ConfigurableApplicationContext`
 
-   tomcat이 백그라운드에 뜨는데 그거 빼고 바로 실행을 종료할 수 있는거
+tomcat이 백그라운드에 뜨는데 그거 빼고 바로 실행을 종료할 수 있는거
 
-   `ApplicationRunner`
+`ApplicationRunner`
 
-   springboot application이 뜨면서 바로 실행이 될 코드를 만들때
+springboot application이 뜨면서 바로 실행이 될 코드를 만들때
 
-   `Thread.*sleep*(1000);`
+`Thread.*sleep*(1000);`
 
-   시간이 오래걸리는 작업
+시간이 오래걸리는 작업
 
-   > **Spring에서 비동기 작업을 수행하려면**
-   >
+> **Spring에서 비동기 작업을 수행하려면**
+>
 
-   @Async 적용 → 비동기 작업은 작업을 수행하는 메소드에서 결과값을 바로 줄 수가 없다.
+@Async 적용 → 비동기 작업은 작업을 수행하는 메소드에서 결과값을 바로 줄 수가 없다.
 
-   그래서 Future 사용
+그래서 Future 사용
 
-   이런 계산을 동시에 시행하는 코드를 짤리는 없지만, 오랜시간 걸리는 장시간의 작업을 수행시키는 경우(배치작업이나 백그라운드 작업)에 쓰인다. 스케줄러를 걸어서 특정 시간이 되면 수행하게 할수 있지만, 클라이언트에서 액션을 하면 시작을 하게 할때 쓰인다.
+이런 계산을 동시에 시행하는 코드를 짤리는 없지만, 오랜시간 걸리는 장시간의 작업을 수행시키는 경우(배치작업이나 백그라운드 작업)에 쓰인다. 스케줄러를 걸어서 특정 시간이 되면 수행하게 할수 있지만, 클라이언트에서 액션을 하면 시작을 하게 할때 쓰인다.
 
-   > **그러면 결과가 나올때까지 get()에서 대기해야하냐..**
-   >
+> **그러면 결과가 나올때까지 get()에서 대기해야하냐..**
+>
 
-   장시간 수행되는 작업에 대해 리턴하는 방법은,
+장시간 수행되는 작업에 대해 리턴하는 방법은,
 
-    1. 결과를 DB에 넣거나 저장매체기술에 넣고 DB를 후에 access해보는 코드
-    2. Future라는 핸들러를.. 컨트롤러라고 생각하면 Http 세션에 저장할수 있는데 세션에 future를 저장하고 바로 리턴해라. 작업이 완료됐는지 궁금하면 DB에 굳이 타지않고 다음 컨트롤러 메소드에서 세션에서 future 값을 꺼내와라. isdone()을 수행해봐라 false면 진행중입니다, true면 그때 값을 끌어와서 진행해줘라.
+ 1. 결과를 DB에 넣거나 저장매체기술에 넣고 DB를 후에 access해보는 코드
+ 2. Future라는 핸들러를.. 컨트롤러라고 생각하면 Http 세션에 저장할수 있는데 세션에 future를 저장하고 바로 리턴해라. 작업이 완료됐는지 궁금하면 DB에 굳이 타지않고 다음 컨트롤러 메소드에서 세션에서 future 값을 꺼내와라. isdone()을 수행해봐라 false면 진행중입니다, true면 그때 값을 끌어와서 진행해줘라.
 
-   > **ListenableFuture**
-   >
+> **ListenableFuture**
+>
 
-   FutureTask를 우겨넣을 방법이 없나.. 없다
+FutureTask를 우겨넣을 방법이 없나.. 없다
 
-   리스너가 옵저버블
+리스너가 옵저버블
 
-   스프링꺼 (자바표준 아님)
+스프링꺼 (자바표준 아님)
 
-   `f.addCallback`
+`f.addCallback`
 
-   successCallback, FailureCallback 받을 수 있다. → 이렇게 비동기 작업 결과를 처리하는 코드 만들 수 있다.
+successCallback, FailureCallback 받을 수 있다. → 이렇게 비동기 작업 결과를 처리하는 코드 만들 수 있다.
 
-   **장점: 콜백을 대기해야하는게 아니라 바로 빠져나가면 그만이다.**
+**장점: 콜백을 대기해야하는게 아니라 바로 빠져나가면 그만이다.**
 
-   > **@Async**
-   >
+> **@Async**
+>
 
-   실제로 이것만 댕강 가져다 놓으면 안된다. 요청할때마다 스레드를 새로 만들기 때문이다. 굉장히 많은 CPU와 메모리 자원을 낭비한다. 일주일에 한번만 실행하면 그래도 되는데 @Bean을 등록하면 좋다.
+실제로 이것만 댕강 가져다 놓으면 안된다. 요청할때마다 스레드를 새로 만들기 때문이다. 굉장히 많은 CPU와 메모리 자원을 낭비한다. 일주일에 한번만 실행하면 그래도 되는데 @Bean을 등록하면 좋다.
 
-   > **@Bean 해결책**
-   >
+> **@Bean 해결책**
+>
 
-   Executor, ExecutorService, ThreadPoolTaskExecutor(기본적으로 얘 쓰면 됨)
+Executor, ExecutorService, ThreadPoolTaskExecutor(기본적으로 얘 쓰면 됨)
 
-   > **ThreadPoolTaskExecutor**
-   >
+> **ThreadPoolTaskExecutor**
+>
 
-   @Async만 있으면 기본적으로 주는 스레드풀을 사용하지만, Executor, ExecutorService, ThreadPoolTaskExecutor가 포함된 @Bean이 있으면 얘를 쓰게 되어있다.
+@Async만 있으면 기본적으로 주는 스레드풀을 사용하지만, Executor, ExecutorService, ThreadPoolTaskExecutor가 포함된 @Bean이 있으면 얘를 쓰게 되어있다.
 
-   비동기 작업이 많으면 `@Async(value = "tp")` 이런식으로 스레드풀을 지정해줄수 있다.
+비동기 작업이 많으면 `@Async(value = "tp")` 이런식으로 스레드풀을 지정해줄수 있다.
 
-   - `setCorePoolSize` 정할 수 있다. (기본적으로는 몇개의 스레드풀을 생성함.)
-   첫번째 스레드 요청이 오면 그때 스레드풀을 생성함.
-   - `setQueueCapacity` 대기하는 큐 개수
-   - `setMaxPoolSize`
-        - CorePoolSize → Queue → MaxPoolSize
-        - CoreThread가 다차면 Queue를 채우고 Queue가 다차면 MaxPool까지 채운다.
-   - `setKeepAliveSeconds` MaxPoolSize 까지 다 차고 KeepAlive 시간동안 할당이 안되면 제거해나감. (불필요한 메모리 제거)
-   - `setTaskDecorator` 스레드 생성, 반환하는 시점에 앞뒤에 콜백을 걸어준다.(로그를 걸어서 스레드가 언제 얼만큼 할당이되고 사용되고 반환되는지 알고싶을 때 분석하고싶을때 사용)
-   - `setThreadNamePrefix` 스레드 이름 변경
-   - `initialize()` 초기화하고 리턴해주면 됨.
-    
+- `setCorePoolSize` 정할 수 있다. (기본적으로는 몇개의 스레드풀을 생성함.)
+첫번째 스레드 요청이 오면 그때 스레드풀을 생성함.
+- `setQueueCapacity` 대기하는 큐 개수
+- `setMaxPoolSize`
+     - CorePoolSize → Queue → MaxPoolSize
+     - CoreThread가 다차면 Queue를 채우고 Queue가 다차면 MaxPool까지 채운다.
+- `setKeepAliveSeconds` MaxPoolSize 까지 다 차고 KeepAlive 시간동안 할당이 안되면 제거해나감. (불필요한 메모리 제거)
+- `setTaskDecorator` 스레드 생성, 반환하는 시점에 앞뒤에 콜백을 걸어준다.(로그를 걸어서 스레드가 언제 얼만큼 할당이되고 사용되고 반환되는지 알고싶을 때 분석하고싶을때 사용)
+- `setThreadNamePrefix` 스레드 이름 변경
+- `initialize()` 초기화하고 리턴해주면 됨.
+
+> **비동기 서블릿**
+- HTTP connection은 이미 non-blocking IO
+   - 블로킹 IO를 많이 사용하면 CPU 자원이 많이 소모됨.
+- 서블릿 요청 읽기, 응답 쓰기는 blocking IO
+- 비동기 작업 시작 즉시 서블릿 쓰레드 반납
+- 비동기 작업이 완료되면 서블릿 쓰레드 재할당
+- 비동기 서블릿 컨텍스트 이용 (AsyncContext)
+
+> Callable
+- 비동기 작업을 감싸고 있는 메소드를 가지고있는 오브젝트
