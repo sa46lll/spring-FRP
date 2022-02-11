@@ -18,6 +18,8 @@ public class Toby0081Application {
     public static class MyController {
 
         @GetMapping("/callable")
+
+        //*   // v1. callable 비동기
         public Callable<String> callable() throws InterruptedException {
             log.info("callable");
             return () -> {
@@ -26,6 +28,13 @@ public class Toby0081Application {
                 return "hello";
             };
         }
+        /*/   // v2.
+        public String callable() throws InterruptedException {
+            log.info("async");
+            Thread.sleep(2000);
+            return "hello";
+        }
+        //*/
     }
 
 

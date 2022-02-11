@@ -14,9 +14,6 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFuture;
 
-import java.util.concurrent.Future;
-import java.util.concurrent.ThreadPoolExecutor;
-
 @SpringBootApplication
 @Slf4j
 @EnableAsync

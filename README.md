@@ -611,7 +611,7 @@ Executor, ExecutorService, ThreadPoolTaskExecutor(기본적으로 얘 쓰면 됨
 - `setThreadNamePrefix` 스레드 이름 변경
 - `initialize()` 초기화하고 리턴해주면 됨.
 
-> **비동기 서블릿**
+### 비동기 서블릿
 - HTTP connection은 이미 non-blocking IO
    - 블로킹 IO를 많이 사용하면 CPU 자원이 많이 소모됨.
 - 서블릿 요청 읽기, 응답 쓰기는 blocking IO
@@ -621,3 +621,32 @@ Executor, ExecutorService, ThreadPoolTaskExecutor(기본적으로 얘 쓰면 됨
 
 > Callable
 - 비동기 작업을 감싸고 있는 메소드를 가지고있는 오브젝트
+```java
+   @RequestMapping("/callable")
+  public Callable<String> callable(String name) {
+        return () ->
+            // res = 작업결과
+            return res;
+        }
+  }
+   ```
+
+
+> 부하테스트 코드를 만들어보자..
+
+웹 요청을 10개의 스레드를 만들어서 동시에 던져보자 -> 응답 보자
+- AtomicInteger
+   - 다른 스레드가 동시에 수행되더라도 꼬이지 않고 별도로 값을 증가하게 해줌. 
+- awaitTermination
+   - 지정된 시간이 timeout 되기 전이라면 그때까지 대기작업이 끝날때까지는 기다려라
+   
+
+- **서블릿 쓰레드 VS 작업 쓰레드**
+   - 뒤에서 워커스레드가 만들어져서 긴 작업을 수행하는 용도로만 사용되면 둘이 비슷하다.
+   - 서블릿 스레드
+      - 굉장히 빠르게 반환이 되고, 한개의 서블릿 스레드를 가지고도 수많은 요청을 한꺼번에 처리할 수 있다.
+      - 워커스레드를 생성하지 않고도 서블릿 스레드로 많은 작업을 처리하는 방법도 있다.
+         - DefferedResult 큐
+            - '스프링 비동기의 꽃'
+      
+  
