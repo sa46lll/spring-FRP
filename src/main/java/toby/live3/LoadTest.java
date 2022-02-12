@@ -17,7 +17,7 @@ public class LoadTest {
         ExecutorService es = Executors.newFixedThreadPool(100);     // 100개의 코어 스레드 생성
 
         RestTemplate rt = new RestTemplate();   // 웹 요청을 날릴거니까
-        String url = "http://localhost:8080/callable";
+        String url = "http://localhost:8080/dr";
 
         StopWatch main = new StopWatch();
         main.start();

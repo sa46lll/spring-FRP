@@ -648,5 +648,8 @@ Executor, ExecutorService, ThreadPoolTaskExecutor(기본적으로 얘 쓰면 됨
       - 워커스레드를 생성하지 않고도 서블릿 스레드로 많은 작업을 처리하는 방법도 있다.
          - DefferedResult 큐
             - '스프링 비동기의 꽃'
+            - 서블릿 자원을 최소화하면서 동시에 수많은 요청을 처리하기에 굉장히 편리함.
+            - 이벤트성 구조, 비동기 IO를 이용한 외부 IO 호출에도 용이함.
+            
       
   
