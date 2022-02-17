@@ -650,6 +650,54 @@ Executor, ExecutorService, ThreadPoolTaskExecutor(기본적으로 얘 쓰면 됨
             - '스프링 비동기의 꽃'
             - 서블릿 자원을 최소화하면서 동시에 수많은 요청을 처리하기에 굉장히 편리함.
             - 이벤트성 구조, 비동기 IO를 이용한 외부 IO 호출에도 용이함.
+               ```java
+               @RequestMapping("/deferredresult")
+               public DeferredResult<String> deferredResult() {
+                     DeferredResult<String> dr = new DeferredResult<>();
+                     queue.add(dr);
+                     return dr;
+               }
+              
+               for(DeferredResult<String> dr : results) {
+                     dr.setResult(msg);
+                     results.remove(dr);
+               }
+      ```
+
+   - HTTP Streaming
+      - ResponseBodyEmitter, SseEmitter, StreamingResponseBody
+      - 한번 요청에 데이터를 여러번에 나누어 보낼 수 있는 기술..
+         ```java
+         @RequestMapping("/stream")
+         public ResponseBodyEmitter stream(){
+            ResponseBodyEmitter emitter = new ResponseBodyEmitter();
+           
+            Executors.newSingleThreadExecutor().submit(() -> {
+                 ...
+                 emitter.send(msg);
+                 ...
+                 emitter.complete();
+           });
+        
+           return emitter;
+         }
+```
+
+## DAY 5
+
+스레드풀
+   - 요청이 급격하게 들어오면 스레드풀이 꽉 참
+   - 추가로 요청이 들어오면 대기상태...
+   - Latency(대기시간)가 급격히 상승한다.
+   - 스레드를 늘리게 되면
+      - 스레드를 하나 생성할 때 메모리와 CPU가 많이 소모됨.
+      - contextSwitching도 자원을 많이 듦.
+      - 오히려 나중엔 시간이 더 든다.
+   
+> RestTemplate
+백단에 별개의 서비스들이 호출하는 작업이 많은 경우...
+   - 단순히 비동기 서블릿으로는 문제가 해결되지 않음.
+   - 
             
       
   
